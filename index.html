@@ -41,43 +41,43 @@
         <span class="nav-divider">·</span>
         <a href="Milos_Nikolic_CV.pdf">CV</a>
         <span class="nav-divider">·</span>
-        <details class="dropdown">
-          <summary class="dropdown-trigger">Publications ▾</summary>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Publications ▾</span>
           <div class="dropdown-content">
             <a href="https://scholar.google.com/citations?user=vsFbQegAAAAJ&hl=en">Google Scholar</a>
             <a href="https://orcid.org/0000-0002-1206-1797">ORCID</a>
           </div>
-        </details>
+        </div>
         <span class="nav-divider">·</span>
-        <details class="dropdown">
-          <summary class="dropdown-trigger">Research Data ▾</summary>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Research Data ▾</span>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/Scale-invariance-in-early-embryonic-development">Scale Invariance PNAS 2024</a>
           </div>
-        </details>
+        </div>
         <span class="nav-divider">·</span>
-        <details class="dropdown">
-          <summary class="dropdown-trigger">Research Tools ▾</summary>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Research Tools ▾</span>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/BrillouinFit">BrillouinFit</a>
           </div>
-        </details>
+        </div>
         <span class="nav-divider">·</span>
-        <details class="dropdown">
-          <summary class="dropdown-trigger">Teaching ▾</summary>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Teaching ▾</span>
           <div class="dropdown-content">
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-501">WRI501</a>
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-502">WRI502</a>
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-503">WRI503</a>
           </div>
-        </details>
+        </div>
         <span class="nav-divider">·</span>
-        <details class="dropdown">
-          <summary class="dropdown-trigger">Teaching Problems ▾</summary>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Teaching Problems ▾</span>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/PHY562_Spring25_MakingMeasurements">PHY562 Spring 2025</a>
           </div>
-        </details>
+        </div>
       </nav>
     </div>
     <footer class="site-footer">
@@ -85,39 +85,36 @@
     </footer>
 
     <script>
-      (function() {
-        var dropdowns = document.querySelectorAll('.dropdown');
-        var summaries = document.querySelectorAll('.dropdown-trigger');
+      var open = null;
+      
+      document.addEventListener('click', function(e) {
+        var trigger = e.target.closest('.dropdown-trigger');
+        var dropdown = e.target.closest('.dropdown');
         
-        function closeAll() {
-          dropdowns.forEach(function(d) { d.open = false; });
+        // Close any open dropdown
+        if (open && open !== dropdown) {
+          open.classList.remove('open');
+          open = null;
         }
         
-        // Intercept summary clicks to close others first
-        summaries.forEach(function(summary) {
-          summary.addEventListener('click', function(e) {
-            var parent = this.parentElement;
-            var wasOpen = parent.open;
-            
-            // Close all dropdowns
-            closeAll();
-            
-            // If it was closed, it will open (native behavior happens after this)
-            // If it was open, we just closed it, and native behavior would reopen it
-            // So we need to prevent default if it was open
-            if (wasOpen) {
-              e.preventDefault();
-            }
-          });
-        });
-        
-        // Close when tapping outside - works on iOS
-        document.body.addEventListener('click', function(e) {
-          if (!e.target.closest('.dropdown')) {
-            closeAll();
+        // Toggle if clicked on trigger
+        if (trigger) {
+          var parent = trigger.parentElement;
+          if (parent.classList.contains('open')) {
+            parent.classList.remove('open');
+            open = null;
+          } else {
+            parent.classList.add('open');
+            open = parent;
           }
-        });
-      })();
+        } else if (!dropdown) {
+          // Clicked outside, close all
+          if (open) {
+            open.classList.remove('open');
+            open = null;
+          }
+        }
+      });
     </script>
   </body>
 </html>
