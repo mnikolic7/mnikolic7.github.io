@@ -83,5 +83,36 @@
     <footer class="site-footer">
       Made with the help of Cursor. · Last updated January 2026
     </footer>
+
+    <script>
+      // Mobile dropdown toggle
+      document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const dropdown = this.parentElement;
+          const wasActive = dropdown.classList.contains('active');
+          
+          // Close all dropdowns
+          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+          
+          // Toggle clicked dropdown
+          if (!wasActive) {
+            dropdown.classList.add('active');
+          }
+        });
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function() {
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+      });
+
+      // Prevent dropdown content clicks from closing
+      document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      });
+    </script>
   </body>
 </html>

@@ -305,7 +305,8 @@ span.highlight {
     color: #5eb3f5;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
     display: block;
 }
 
