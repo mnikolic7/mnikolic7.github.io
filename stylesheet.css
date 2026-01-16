@@ -63,8 +63,41 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  flex: 1;
+}
+
+.profile-photo {
+  margin-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 a {
-  color: #1772d0;
+  color: #5eb3f5;
   text-decoration: none;
 }
 
@@ -82,6 +115,7 @@ p,
 a {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
+  color: #e0e0e0;
 }
 
 strong {
@@ -103,10 +137,22 @@ h2 {
 }
 
 .name {
-  padding-top: 20px;
   margin: 0;
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 32px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #a0a0a0;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
 .one {
@@ -139,4 +185,135 @@ span.highlight {
     padding: 20px;
     display: inline-block;
     border-radius: 10px;
+}
+
+.tagline {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #b0b0b0;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.nav-menu {
+    text-align: center;
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 0;
+}
+
+.nav-menu > a {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #5eb3f5;
+    text-decoration: none;
+    padding: 5px 8px;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-menu > a:hover {
+    color: #f09228;
+}
+
+.nav-divider {
+    color: #555;
+    margin: 0 5px;
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+    .nav-menu {
+        gap: 12px 0;
+        padding: 18px 15px;
+    }
+    
+    .nav-divider {
+        margin: 0 3px;
+    }
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-trigger {
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #5eb3f5;
+    cursor: pointer;
+    padding: 5px 8px;
+    transition: color 0.2s ease-in-out;
+}
+
+.dropdown-trigger:hover {
+    color: #f09228;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    background-color: #1a1a1a;
+    min-width: 200px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    border: 1px solid #333;
+    z-index: 1000;
+    padding: 8px 0;
+    margin-top: 5px;
+}
+
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #1a1a1a;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px 16px;
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #d0d0d0;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.dropdown-content a:hover {
+    background-color: #2a2a2a;
+    color: #5eb3f5;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 30px 20px;
+    font-family: 'Lato', Verdana, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #666;
 }

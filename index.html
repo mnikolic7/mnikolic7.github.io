@@ -8,24 +8,80 @@
     <meta name="author" content="Milos Nikolic">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+
+    <!-- Google Analytics -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-81G2SZQLSW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-81G2SZQLSW');
+    </script>
+        
   </head>
 
   <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Miloš Nikolić
-                </p>
-                <p>
-		                Hello! I am a postdoc at Princeton. Find me on <a href="https://www.linkedin.com/in/mnikolic0706/">LinkedIn</a>. You can find my CV <a href="Milos_Nikolic_CV.pdf">here</a>.
-                </p>
-            </tr>
-          </tbody></table>
-          
+    <div class="container">
+      <div class="profile-photo">
+        <img alt="profile photo" src="MilosNikolic_v2.jpg">
+      </div>
+      <p class="name">
+        Miloš Nikolić
+      </p>
+      <p class="subtitle">
+        Postdoc @ Princeton
+      </p>
+      <p class="tagline">
+        I am a physicist transforming biological fluctuations into precise quantitative predictions.
+      </p>
+      <nav class="nav-menu">
+        <a href="https://www.linkedin.com/in/mnikolic0706/">LinkedIn</a>
+        <span class="nav-divider">·</span>
+        <a href="Milos_Nikolic_CV.pdf">CV</a>
+        <span class="nav-divider">·</span>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Publications ▾</span>
+          <div class="dropdown-content">
+            <a href="https://scholar.google.com/citations?user=vsFbQegAAAAJ&hl=en">Google Scholar</a>
+            <a href="https://orcid.org/0000-0002-1206-1797">ORCID</a>
+          </div>
+        </div>
+        <span class="nav-divider">·</span>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Teaching Problems ▾</span>
+          <div class="dropdown-content">
+            <a href="https://github.com/mnikolic7/PHY562_Spring25_MakingMeasurements">PHY562 Spring 2025</a>
+          </div>
+        </div>
+        <span class="nav-divider">·</span>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Research Data ▾</span>
+          <div class="dropdown-content">
+            <a href="https://github.com/mnikolic7/Scale-invariance-in-early-embryonic-development">Scale Invariance PNAS 2024</a>
+          </div>
+        </div>
+        <span class="nav-divider">·</span>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Research Tools ▾</span>
+          <div class="dropdown-content">
+            <a href="https://github.com/mnikolic7/BrillouinFit">BrillouinFit</a>
+          </div>
+        </div>
+        <span class="nav-divider">·</span>
+        <div class="dropdown">
+          <span class="dropdown-trigger">Teaching ▾</span>
+          <div class="dropdown-content">
+            <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-501">WRI501</a>
+            <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-502">WRI502</a>
+            <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-503">WRI503</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <footer class="site-footer">
+      Made with the help of Cursor. · Last updated January 2026
+    </footer>
   </body>
 </html>
