@@ -88,30 +88,28 @@
       // Mobile dropdown toggle
       document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
         trigger.addEventListener('click', function(e) {
+          e.preventDefault();
           e.stopPropagation();
           const dropdown = this.parentElement;
-          const wasActive = dropdown.classList.contains('active');
           
-          // Close all dropdowns
-          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+          // Check if this dropdown is currently open
+          const isOpen = dropdown.classList.contains('active');
           
-          // Toggle clicked dropdown
-          if (!wasActive) {
-            dropdown.classList.add('active');
-          }
+          // Close all other dropdowns first
+          document.querySelectorAll('.dropdown').forEach(d => {
+            if (d !== dropdown) d.classList.remove('active');
+          });
+          
+          // Toggle this dropdown: if open, close it; if closed, open it
+          dropdown.classList.toggle('active');
         });
       });
 
       // Close dropdowns when clicking outside
-      document.addEventListener('click', function() {
-        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
-      });
-
-      // Prevent dropdown content clicks from closing
-      document.querySelectorAll('.dropdown-content').forEach(content => {
-        content.addEventListener('click', function(e) {
-          e.stopPropagation();
-        });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+        }
       });
     </script>
   </body>
