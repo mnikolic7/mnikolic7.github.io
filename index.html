@@ -85,23 +85,39 @@
     </footer>
 
     <script>
-      // Close other dropdowns when one opens
-      document.querySelectorAll('.dropdown').forEach(details => {
-        details.addEventListener('toggle', () => {
-          if (details.open) {
-            document.querySelectorAll('.dropdown').forEach(d => {
-              if (d !== details) d.removeAttribute('open');
-            });
+      (function() {
+        var dropdowns = document.querySelectorAll('.dropdown');
+        var summaries = document.querySelectorAll('.dropdown-trigger');
+        
+        function closeAll() {
+          dropdowns.forEach(function(d) { d.open = false; });
+        }
+        
+        // Intercept summary clicks to close others first
+        summaries.forEach(function(summary) {
+          summary.addEventListener('click', function(e) {
+            var parent = this.parentElement;
+            var wasOpen = parent.open;
+            
+            // Close all dropdowns
+            closeAll();
+            
+            // If it was closed, it will open (native behavior happens after this)
+            // If it was open, we just closed it, and native behavior would reopen it
+            // So we need to prevent default if it was open
+            if (wasOpen) {
+              e.preventDefault();
+            }
+          });
+        });
+        
+        // Close when tapping outside - works on iOS
+        document.body.addEventListener('click', function(e) {
+          if (!e.target.closest('.dropdown')) {
+            closeAll();
           }
         });
-      });
-
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', e => {
-        if (!e.target.closest('.dropdown')) {
-          document.querySelectorAll('.dropdown').forEach(d => d.removeAttribute('open'));
-        }
-      });
+      })();
     </script>
   </body>
 </html>
