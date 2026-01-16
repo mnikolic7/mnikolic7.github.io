@@ -310,7 +310,13 @@ span.highlight {
     color: #5eb3f5;
 }
 
-.dropdown:hover .dropdown-content,
+/* Only enable hover on devices with a mouse */
+@media (hover: hover) {
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
 .dropdown[open] .dropdown-content {
     display: block;
 }
