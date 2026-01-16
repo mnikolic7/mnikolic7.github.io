@@ -41,43 +41,43 @@
         <span class="nav-divider">·</span>
         <a href="Milos_Nikolic_CV.pdf">CV</a>
         <span class="nav-divider">·</span>
-        <div class="dropdown">
-          <span class="dropdown-trigger">Publications ▾</span>
+        <details class="dropdown">
+          <summary class="dropdown-trigger">Publications ▾</summary>
           <div class="dropdown-content">
             <a href="https://scholar.google.com/citations?user=vsFbQegAAAAJ&hl=en">Google Scholar</a>
             <a href="https://orcid.org/0000-0002-1206-1797">ORCID</a>
           </div>
-        </div>
+        </details>
         <span class="nav-divider">·</span>
-        <div class="dropdown">
-          <span class="dropdown-trigger">Research Data ▾</span>
+        <details class="dropdown">
+          <summary class="dropdown-trigger">Research Data ▾</summary>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/Scale-invariance-in-early-embryonic-development">Scale Invariance PNAS 2024</a>
           </div>
-        </div>
+        </details>
         <span class="nav-divider">·</span>
-        <div class="dropdown">
-          <span class="dropdown-trigger">Research Tools ▾</span>
+        <details class="dropdown">
+          <summary class="dropdown-trigger">Research Tools ▾</summary>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/BrillouinFit">BrillouinFit</a>
           </div>
-        </div>
+        </details>
         <span class="nav-divider">·</span>
-        <div class="dropdown">
-          <span class="dropdown-trigger">Teaching ▾</span>
+        <details class="dropdown">
+          <summary class="dropdown-trigger">Teaching ▾</summary>
           <div class="dropdown-content">
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-501">WRI501</a>
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-502">WRI502</a>
             <a href="https://writing.princeton.edu/graduate-students-postdocs/writing-courses-science-engineering/wri-503">WRI503</a>
           </div>
-        </div>
+        </details>
         <span class="nav-divider">·</span>
-        <div class="dropdown">
-          <span class="dropdown-trigger">Teaching Problems ▾</span>
+        <details class="dropdown">
+          <summary class="dropdown-trigger">Teaching Problems ▾</summary>
           <div class="dropdown-content">
             <a href="https://github.com/mnikolic7/PHY562_Spring25_MakingMeasurements">PHY562 Spring 2025</a>
           </div>
-        </div>
+        </details>
       </nav>
     </div>
     <footer class="site-footer">
@@ -85,30 +85,21 @@
     </footer>
 
     <script>
-      // Mobile dropdown toggle
-      document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          const dropdown = this.parentElement;
-          
-          // Check if this dropdown is currently open
-          const isOpen = dropdown.classList.contains('active');
-          
-          // Close all other dropdowns first
-          document.querySelectorAll('.dropdown').forEach(d => {
-            if (d !== dropdown) d.classList.remove('active');
-          });
-          
-          // Toggle this dropdown: if open, close it; if closed, open it
-          dropdown.classList.toggle('active');
+      // Close other dropdowns when one opens
+      document.querySelectorAll('.dropdown').forEach(details => {
+        details.addEventListener('toggle', () => {
+          if (details.open) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+              if (d !== details) d.removeAttribute('open');
+            });
+          }
         });
       });
 
       // Close dropdowns when clicking outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', e => {
         if (!e.target.closest('.dropdown')) {
-          document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+          document.querySelectorAll('.dropdown').forEach(d => d.removeAttribute('open'));
         }
       });
     </script>

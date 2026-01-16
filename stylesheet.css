@@ -255,6 +255,11 @@ span.highlight {
     cursor: pointer;
     padding: 5px 8px;
     transition: color 0.2s ease-in-out;
+    list-style: none;
+}
+
+.dropdown-trigger::-webkit-details-marker {
+    display: none;
 }
 
 .dropdown-trigger:hover {
@@ -306,7 +311,7 @@ span.highlight {
 }
 
 .dropdown:hover .dropdown-content,
-.dropdown.active .dropdown-content {
+.dropdown[open] .dropdown-content {
     display: block;
 }
 
