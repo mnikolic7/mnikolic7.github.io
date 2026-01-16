@@ -85,36 +85,33 @@
     </footer>
 
     <script>
-      var open = null;
+      var openDropdown = null;
       
-      document.addEventListener('click', function(e) {
+      function handleTap(e) {
         var trigger = e.target.closest('.dropdown-trigger');
         var dropdown = e.target.closest('.dropdown');
         
-        // Close any open dropdown
-        if (open && open !== dropdown) {
-          open.classList.remove('open');
-          open = null;
-        }
-        
-        // Toggle if clicked on trigger
         if (trigger) {
+          e.preventDefault();
           var parent = trigger.parentElement;
-          if (parent.classList.contains('open')) {
-            parent.classList.remove('open');
-            open = null;
-          } else {
-            parent.classList.add('open');
-            open = parent;
+          
+          // Close other dropdown if open
+          if (openDropdown && openDropdown !== parent) {
+            openDropdown.classList.remove('open');
           }
-        } else if (!dropdown) {
-          // Clicked outside, close all
-          if (open) {
-            open.classList.remove('open');
-            open = null;
-          }
+          
+          // Toggle this dropdown
+          parent.classList.toggle('open');
+          openDropdown = parent.classList.contains('open') ? parent : null;
+        } else if (!dropdown && openDropdown) {
+          // Tapped outside
+          openDropdown.classList.remove('open');
+          openDropdown = null;
         }
-      });
+      }
+      
+      document.addEventListener('click', handleTap);
+      document.addEventListener('touchend', handleTap);
     </script>
   </body>
 </html>

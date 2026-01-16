@@ -254,9 +254,19 @@ span.highlight {
     color: #5eb3f5;
     cursor: pointer;
     padding: 5px 8px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.dropdown-trigger:hover {
+/* Only use hover color on devices with mouse */
+@media (hover: hover) {
+    .dropdown-trigger:hover {
+        color: #f09228;
+    }
+}
+
+/* Color when dropdown is open (works on all devices) */
+.dropdown.open .dropdown-trigger {
     color: #f09228;
 }
 
